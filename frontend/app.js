@@ -15,7 +15,7 @@ async function askQuestion() {
 
     const response =
         await fetch(
-            "http://localhost:8000/ask",
+            "https://769f-142-114-87-87.ngrok-free.app/ask",
             {
                 method: "POST",
 
