@@ -1,0 +1,82 @@
+[
+  {
+    "question": "Who are the software engineers?",
+    "category": "employee_lookup"
+  },
+  {
+    "question": "List all engineering employees.",
+    "category": "employee_lookup"
+  },
+  {
+    "question": "Which employees have AWS certification?",
+    "category": "certification"
+  },
+  {
+    "question": "Who has CISSP certification?",
+    "category": "certification"
+  },
+  {
+    "question": "List employees with Azure certifications.",
+    "category": "certification"
+  },
+  {
+    "question": "Which employees started after 2023?",
+    "category": "start_date"
+  },
+  {
+    "question": "Which employees started before 2020?",
+    "category": "start_date"
+  },
+  {
+    "question": "Show employees hired in 2024.",
+    "category": "start_date"
+  },
+  {
+    "question": "What is the average salary?",
+    "category": "salary"
+  },
+  {
+    "question": "Who earns the highest salary?",
+    "category": "salary"
+  },
+  {
+    "question": "Who earns the lowest salary?",
+    "category": "salary"
+  },
+  {
+    "question": "What is the average bonus?",
+    "category": "bonus"
+  },
+  {
+    "question": "List employees with bonuses above 20000.",
+    "category": "bonus"
+  },
+  {
+    "question": "Who has the highest remaining benefits balance?",
+    "category": "benefits"
+  },
+  {
+    "question": "Show employees with Platinum benefits.",
+    "category": "benefits"
+  },
+  {
+    "question": "What certifications does Helen Lee have?",
+    "category": "employee_certifications"
+  },
+  {
+    "question": "List employees and their certifications.",
+    "category": "employee_certifications"
+  },
+  {
+    "question": "How many employees are in this department?",
+    "category": "aggregation"
+  },
+  {
+    "question": "How many AWS certified employees are there?",
+    "category": "aggregation"
+  },
+  {
+    "question": "Which employees have both benefits and certifications?",
+    "category": "join_query"
+  }
+]

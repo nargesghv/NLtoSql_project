@@ -1,0 +1,10 @@
+langchain
+langchain-community
+langchain-ollama
+langgraph
+sqlalchemy
+python-dotenv
+tabulate
+pydantic
+sqlparse
+rich

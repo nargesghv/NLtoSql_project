@@ -1,0 +1,102 @@
+[
+  {
+    "question": "Who are the software engineers?",
+    "ground_truth": "SELECT Name FROM Employee WHERE Department = 'Engineering'AND Role = 'Software Engineer';",
+    "Sql_result": "SELECT DISTINCT E.Name, C.CertificationName FROM Employee E JOIN Certification C ON E.EmployeeId = C.EmployeeId WHERE E.Department = 'Engineering' AND E.Role = 'Software Engineer';"
+  },
+  {
+    "question": "List all engineering employees.",
+    "ground_truth": "SELECT * FROM Employee WHERE Department = 'Engineering';",
+    "Sql_result": "SELECT DISTINCT Name FROM Employee WHERE Department = 'Engineering';"
+  },
+  {
+    "question": "Which employees have AWS certification?",
+    "Sql_result": "SELECT DISTINCT e.Name FROM Employee e JOIN Certification c ON e.EmployeeId = c.EmployeeId WHERE e.Department = 'Engineering' AND c.CertificationName LIKE '%AWS%';",
+    "ground_truth": "SELECT DISTINCT e.Name FROM Employee e JOIN Certification c ON e.EmployeeId=c.EmployeeId WHERE e.Department='{department}' AND c.CertificationName LIKE '%AWS%';"
+  },
+  {
+    "question": "Who has CISSP certification?",
+    "Sql_result": "SELECT DISTINCT e.Name FROM Employee e JOIN Certification c ON e.EmployeeId = c.EmployeeId WHERE e.Department = 'Engineering' AND c.CertificationName LIKE '%CISSP%';",
+    "ground_truth": "SELECT e.Name FROM Employee AS e INNER JOIN Certification AS c ON e.EmployeeId = c.EmployeeId WHERE e.Department = 'Engineering' AND c.CertificationName = 'CISSP';"
+  },
+  {
+    "question": "List employees with Azure certifications.",
+    "Sql_result": "SELECT DISTINCT e.Name FROM Employee e JOIN Certification c ON e.EmployeeId = c.EmployeeId WHERE e.Department = 'Engineering' AND c.CertificationName LIKE '%Azure%';",
+    "ground_truth": "SELECT DISTINCT e.Name FROM Employee e JOIN Certification c ON e.EmployeeId=c.EmployeeId WHERE e.Department='{department}' AND c.CertificationName LIKE '%Azure%';"
+  },
+  {
+    "question": "Which employees started after 2023?",
+    "Sql_result": "SELECT DISTINCT e.Name FROM Employee e JOIN Benefits b ON e.EmployeeId = b.EmployeeId WHERE e.Department = 'Engineering' AND e.EmploymentStartDate > '2023-01-01';",
+    "ground_truth": "SELECT Name, EmploymentStartDate FROM Employee WHERE Department='{department}'AND EmploymentStartDate > '2023-01-01';"
+  },
+  {
+    "question": "Which employees started before 2020?",
+    "Sql_result": "SELECT DISTINCT e.Name, e.EmploymentStartDate FROM Employee e WHERE e.Department = 'Engineering' AND e.EmploymentStartDate < '2020-01-01';",
+    "ground_truth": "SELECT Name, EmploymentStartDate FROM Employee WHERE Department='{department}'AND EmploymentStartDate < '2020-01-01';"
+  },
+  {
+    "question": "Show employees hired in 2024.",
+    "Sql_result": "SELECT DISTINCT e.Name FROM Employee e WHERE e.Department = 'Sales' AND e.EmploymentStartDate LIKE '%2024%';",
+    "ground_truth":"SELECT Name FROM Employee WHERE Department='{department}'AND EmploymentStartDate BETWEEN '2024-01-01'AND'2024-12-31';"
+  },
+  {
+    "question": "What is the average salary?",
+    "Sql_result": "SELECT AVG(SalaryAmount) AS AverageSalary FROM Employee WHERE Department = 'Engineering';",
+    "ground_truth":"SELECT AVG(SalaryAmount) FROM Employee WHERE Department='{department}';"
+  },
+  {
+    "question": "Who earns the highest salary?",
+    "Sql_result": "SELECT Name, SalaryAmount FROM Employee WHERE Department = 'Engineering' ORDER BY SalaryAmount DESC LIMIT 1;",
+    "ground_truth":"SELECT Name, SalaryAmount FROM Employee WHERE Department='{department}' ORDER BY SalaryAmount DESC LIMIT 1;"
+  },
+  {
+    "question": "Who earns the lowest salary?",
+    "Sql_result": "SELECT DISTINCT e.Name FROM Employee e JOIN Certification c ON e.EmployeeId = c.EmployeeId WHERE e.Department = 'Engineering' AND c.CertificationName LIKE '%AWS%';",
+    "ground_truth":"SELECT Name, SalaryAmount FROM Employee WHERE Department='{department}' ORDER BY SalaryAmount ASC LIMIT 1;"
+  },
+  {
+    "question": "What is the average bonus?",
+    "Sql_result": "SELECT AVG(e.YearlyBonusAmount) FROM Employee e WHERE Department = 'Sales';",
+    "ground_truth":"SELECT AVG(YearlyBonusAmount) FROM Employee WHERE Department='{department}';"
+  },
+  {
+    "question": "List employees with bonuses above 20000.",
+    "Sql_result": "SELECT Name FROM Employee WHERE Department = 'Sales' AND SalaryAmount + YearlyBonusAmount > 20000;",
+    "ground_truth":"SELECT Name, YearlyBonusAmount FROM Employee WHERE Department='{department}' AND YearlyBonusAmount > 20000;"
+  },
+  {
+    "question": "Who has the highest remaining benefits balance?",
+    "Sql_result": "SELECT DISTINCT e.Name, b.RemainingBalance FROM Employee e JOIN Benefits b ON e.EmployeeId = b.EmployeeId WHERE e.Department = 'Sales' ORDER BY b.RemainingBalance DESC LIMIT 1;",
+    "ground_truth":"SELECT e.Name,b.RemainingBalance FROM Employee e JOIN Benefits b ON e.EmployeeId=b.EmployeeId WHERE e.Department='{department}' ORDER BY b.RemainingBalance DESC LIMIT 1;"
+  },
+  {
+    "question": "Show employees with Platinum benefits.",
+    "Sql_result": "SELECT DISTINCT e.Name FROM Employee e JOIN Benefits b ON e.EmployeeId = b.EmployeeId WHERE e.Department = 'Sales' AND b.BenefitsPackage = 'Platinum';",
+    "ground_truth":"SELECT e.Name FROM Employee e JOIN Benefits b ON e.EmployeeId=b.EmployeeId WHERE e.Department='{department}'AND b.BenefitsPackage='Platinum';"
+  },
+  {
+    "question": "What certifications does Helen Lee have?",
+    "Sql_result": "SELECT DISTINCT c.CertificationName FROM Certification c JOIN Employee e ON c.EmployeeId = e.EmployeeId WHERE e.Name = 'Helen Lee' AND e.Department = 'Sales';",
+    "ground_truth":"SELECT c.CertificationName FROM Employee e JOIN Certification c ON e.EmployeeId=c.EmployeeId WHERE e.Department='{department}' AND e.Name='Helen Lee';"
+  },
+  {
+    "question": "List employees and their certifications.",
+    "Sql_result": "SELECT DISTINCT e.Name, c.CertificationName FROM Employee e JOIN Certification c ON e.EmployeeId = c.EmployeeId WHERE e.Department = 'Sales' AND c.CertificationName LIKE '%keyword%';",
+    "ground_truth":"SELECT e.Name,c.CertificationName FROM Employee e JOIN Certification c ON e.EmployeeId=c.EmployeeId WHERE e.Department='{department}';"
+  },
+  {
+    "question": "How many employees are in this department?",
+    "Sql_result": "SELECT COUNT(DISTINCT e.Name) FROM Employee e JOIN Certification c ON e.EmployeeId = c.EmployeeId WHERE e.Department = 'Sales';",
+    "ground_truth":"SELECT COUNT(*) FROM Employee WHERE Department='{department}';"
+  },
+  {
+    "question": "How many AWS certified employees are there?",
+    "Sql_result": "SELECT COUNT(DISTINCT e.Name) FROM Employee e JOIN Certification c ON e.EmployeeId = c.EmployeeId WHERE e.Department = 'Sales' AND c.CertificationName LIKE '%AWS%';",
+    "ground_truth":"SELECT COUNT(DISTINCT e.EmployeeId) FROM Employee e JOIN Certification c ON e.EmployeeId=c.EmployeeId WHERE e.Department='{department}' AND c.CertificationName LIKE '%AWS%';"
+  },
+  {
+    "question": "Which employees have both benefits and certifications?",
+    "Sql_result": "SELECT DISTINCT e.Name FROM Employee e JOIN Certification c ON e.EmployeeId = c.EmployeeId JOIN Benefits b ON e.EmployeeId = b.EmployeeId WHERE e.Department = 'Sales';",
+    "ground_truth":"SELECT DISTINCT e.Name FROM Employee e JOIN Benefits b ON e.EmployeeId=b.EmployeeId JOIN Certification c ON e.EmployeeId=c.EmployeeId WHERE e.Department='{department}';"
+  }
+]
