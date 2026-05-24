@@ -84,29 +84,6 @@ This guarantees that data from other departments is never returned.
 # Architecture
 
 The final architecture prioritizes simplicity, reliability, and low latency.
-
-```text
-User Question
-        ↓
-SQL Generator (Llama 3.1)
-        ↓
-SQL Validator
-        ↓
-   +------------+
-   |            |
- Valid      Invalid
-   |            |
-   |            ↓
-   |      SQL Repair Agent
-   |            |
-   +------------+
-        ↓
-SQLite Execution
-        ↓
-Answer Formatter
-        ↓
-Response
-```
 ```mermaid
 flowchart TD
 
