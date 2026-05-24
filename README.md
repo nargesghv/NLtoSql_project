@@ -107,7 +107,42 @@ Answer Formatter
         ↓
 Response
 ```
+```mermaid
+flowchart TD
 
+    A["👤 User Question"]
+
+    B["🧠 SQL Generator<br/>Llama 3.1 (Ollama)"]
+
+    C["🛡️ SQL Validator<br/>Guardrails & Safety Checks"]
+
+    D["🔧 SQL Repair Agent"]
+
+    E["🗄️ SQLite Database<br/>employees.db"]
+
+    F["📋 Answer Formatter"]
+
+    G["✅ Response"]
+
+    A --> B
+    B --> C
+
+    C -->|Valid SQL| E
+    C -->|Invalid SQL| D
+
+    D --> C
+
+    E --> F
+    F --> G
+
+    style A fill:#E3F2FD,stroke:#1E88E5,stroke-width:2px
+    style B fill:#E8F5E9,stroke:#43A047,stroke-width:2px
+    style C fill:#FFF3E0,stroke:#FB8C00,stroke-width:2px
+    style D fill:#FCE4EC,stroke:#D81B60,stroke-width:2px
+    style E fill:#F3E5F5,stroke:#8E24AA,stroke-width:2px
+    style F fill:#E0F7FA,stroke:#00ACC1,stroke-width:2px
+    style G fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px
+```
 ---
 
 # Components
