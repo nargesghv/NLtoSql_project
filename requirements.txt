@@ -8,3 +8,5 @@ tabulate
 pydantic
 sqlparse
 rich
+fastapi
+uvicorn
